@@ -49,6 +49,33 @@
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+.button1 {
+  transition-duration: 0.4s;
+  height: 28px;
+  width:80px;
+  font-family:cursive;
+  box-shadow: 0 15px 25px 0 rgba(0,0,0,0.2), 0 15px 30px 0 rgba(0,0,0,0.19);
+}
+
+.button1:hover {
+  background-color: blueviolet;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.button2 {
+  transition-duration: 0.4s;
+  height: 28px;
+  width:80px;
+  font-family:cursive;
+  box-shadow: 0 15px 25px 0 rgba(0,0,0,0.2), 0 15px 30px 0 rgba(0,0,0,0.19);
+}
+
+.button2:hover {
+  background-color: darkred;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 .border{
     border-radius: 50px 20px;  
      }
@@ -66,24 +93,47 @@
 	<p> Press the button to create an new element of type div and then add it to the container.
 		</p>
 		<input type ="button" class="button" id ="addEndButton"  value ="Add end">
-		
-	
-	
+		<input type ="button" class="button1" id ="addFrontButton"  value ="Add Front">
+	    <input type ="button" class="button2" id ="removeButton"  value ="Remove">
+
 </body>
 <script>
 
-        document.getElementById("addEndButton").addEventListener("click", function () {
+    document.getElementById("addEndButton").addEventListener("click", function () {
 
-        var inputValue = document.getElementById("textInput").value;
+    var inputValue = document.getElementById("textInput").value;
 
-        var newDiv = document.createElement("div");
+    var newDiv = document.createElement("div");
 
-        newDiv.innerHTML = inputValue;
+    newDiv.innerHTML = inputValue;
 
-        newDiv.className = "merger";
+    newDiv.className = "merger";
 
-        document.querySelector(".flex-container").appendChild(newDiv);
+    document.querySelector(".flex-container").appendChild(newDiv);
 });
 
+    document.getElementById("removeButton").addEventListener("click", function () {
+	
+	var mergerItems = document.getElementsByClassName("merger");
+
+	var length = mergerItems.length;
+
+	if (length > 0) {
+		var middleIndex = Math.floor(length / 2);
+		mergerItems[middleIndex].remove();
+	}
+});
+
+    document.getElementById("addFrontButton").addEventListener("click", function () {
+
+	var inputValue = document.getElementById("textInput").value;
+	var newDiv = document.createElement("div");
+	newDiv.innerHTML = inputValue;
+	newDiv.className = "merger";
+
+	var container = document.querySelector(".flex-container");
+
+	container.insertBefore(newDiv, container.firstChild);
+});
 </script>
 </html>	
