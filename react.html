@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>React for Beginners</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+    .btnclr {
+      color: forestgreen;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      box-shadow: 0 15px 25px 0 rgba(0,0,0,0.2), 0 15px 30px 0 rgba(0,0,0,0.19);
+    }
+    body {
+      margin-left: 15px;
+    }
+    h1 {
+        text-shadow: 2px 2px 8px brown;
+        
+    }
+    body {
+      text-align: center;
+      background-color:lavender;
+    }
+  </style>
+
+</head>
+<body>
+
+  <h1>Kavya Sree Konda speed check</h1>
+
+  <br>
+    <div id="target">Your Time</div> 
+    <div id="counter">Count</div>
+
+<br> 
+  <input id ="start-button" class="btnclr" type="button" value="Start Timer">
+  <input id="react-button" class="btnclr" type ="button" value="React">
+  
+  <script> 
+  var reactTime = undefined;
+
+function recordTime() 
+{
+    reactTime = Date.now();
+    console.log("React time recorded:", reactTime);
+}
+document.getElementById("react-button").onclick = recordTime;
+function startTime() {
+  
+    for (var i = 0; i < 9; i++) {
+     
+        setTimeout(function (count) {
+            return function () {
+                document.getElementById("counter").innerHTML = count;
+            };
+        }(i), (8 - i) * 1000);
+    }
+
+    setTimeout(function () {
+      
+        if (typeof reactTime === "undefined") {
+        
+            document.getElementById("target").innerHTML = "Too Slow";
+        } else {
+            var endTime = Date.now();
+            var elapsedTime = endTime - reactTime;
+
+            document.getElementById("target").innerHTML = "Time was " + elapsedTime + "ms";
+        }
+    }, 8000);
+}
+document.getElementById("start-button").onclick = startTime;
+  </script>
+</body>
+</html>
