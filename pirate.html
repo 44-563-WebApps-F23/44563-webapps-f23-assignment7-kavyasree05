@@ -188,9 +188,20 @@
             }
             penalty = penalty+2
             document.getElementById('penalty').innerHTML = "penalty is "+ penalty
+            help_text = document.getElementById("help")
+            help_text.innerHTML = `Help report - ${report}`
 
         }
-    </script>
+
+      function reset() {
+      checkCount = 0;
+      penalty = 0
+      treasureLocation = Math.round(Math.random() * (24));
+      trapLocation = Math.round(Math.random() * (24));
+      document.getElementById("locations").innerHTML = `Number of locations checked is ${checkCount}`
+      document.getElementById("penalty").innerHTML = `Penalty is ${penalty}`
+}
+    </script> 
 
   <h1>Find the treasure by Kavya Sree Konda</h1> 
   <div id="first">Click on the locations to search for treasure, beware the traps.</div> 
