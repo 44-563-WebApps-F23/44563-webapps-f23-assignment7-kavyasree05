@@ -130,84 +130,12 @@
 </head>
 
 <body>
-    <script>
-        const imgArr = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10", "img11", "img12", "img13", "img14", "img15", "img16", "img17", "img18", "img19", "img20", "img21", "img22", "img23", "img24","img25"]
-        let checkCount = 0
-        let penalty = 0
-        let lastCheck = 0
-        let treasureLocation = 5
-        let trapLocation = 18
-        let gameOver = false
-
-        function check(position){
-            if(!gameOver){
-                let idPos = document.getElementById(imgArr[position])
-               console.log(idPos)
-
-               if(position == treasureLocation){
-                    idPos.src = "./Treasure.webp"
-                    gameOver = true
-                    penalty = penalty - 3
-                    
-               }else if(position==trapLocation){
-                    idPos.src = "./TreasureTrap.jpg"
-                    gameOver = true
-                    penalty = penalty + 4
-               }else{
-                    idPos.src = "./FinalImg.jpg"
-                    penalty = penalty + 1
-               }
-               
-               checkCount = checkCount + 1
-
-               lastCheck = position
-
-               document.getElementById('penalty').innerHTML = `penalty is ${penalty}`
-
-            }
-        }
-
-
-        function help(){
-            let row = Math.floor(lastCheck / 5)
-            let col = Math.floor(lastCheck % 5)
-
-            if (row - col === 1 || col-row === 1){
-                document.getElementById('help').innerHTML =  "Can smell it"
-            }
-
-            let treasureRow = Math.floor(treasureLocation/5)
-            let treasureCol = Math.floor(treasureLocation % 5)
-
-            if (Math.abs(treasureRow - row) + Math.abs(treasureCol-col) === 1){
-                document.getElementById('help').innerHTML =  "Can smell it"
-            }else if(Math.abs(treasureRow - row) + Math.abs(treasureCol-col) === 2){
-                document.getElementById('help').innerHTML =  "Close Matie"
-            }else{
-                document.getElementById('help').innerHTML = "Step Faster"
-            }
-            penalty = penalty+2
-            document.getElementById('penalty').innerHTML = "penalty is "+ penalty
-            help_text = document.getElementById("help")
-            help_text.innerHTML = `Help report - ${report}`
-
-        }
-
-      function reset() {
-      checkCount = 0;
-      penalty = 0
-      treasureLocation = Math.round(Math.random() * (24));
-      trapLocation = Math.round(Math.random() * (24));
-      document.getElementById("locations").innerHTML = `Number of locations checked is ${checkCount}`
-      document.getElementById("penalty").innerHTML = `Penalty is ${penalty}`
-}
-    </script> 
-
+  
   <h1>Find the treasure by Kavya Sree Konda</h1> 
   <div id="first">Click on the locations to search for treasure, beware the traps.</div> 
   <div id="locations">Number of locations checked is zero.</div> 
   <div id="penalty">Penalty is zero</div> 
-  <div id="second">Click for help.</div>
+  <div onclick="help()" id="second">Click for help.</div>
   <div id="help">Help report</div> <br>
 
   <div class="game-field">
@@ -305,5 +233,79 @@
               <img id="img25" onclick="check(24)" src="./Treasurehunt.jpg" height="65" width="75">
             </div>
           </div>
+
+          <script>
+            const imgArr = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10", "img11", "img12", "img13", "img14", "img15", "img16", "img17", "img18", "img19", "img20", "img21", "img22", "img23", "img24","img25"]
+            let checkCount = 0
+            let penalty = 0
+            let lastCheck = 0
+            let treasureLocation = 5
+            let trapLocation = 18
+            let gameOver = false
+    
+            function check(position){
+                if(!gameOver){
+                    let idPos = document.getElementById(imgArr[position])
+                   console.log(idPos)
+                   document.getElementById("locations").textContent ="Locations Checked: " + checkCount;
+    
+                   if(position == treasureLocation){
+                        idPos.src = "./Treasure.webp"
+                        gameOver = true
+                        penalty = penalty - 3
+                        
+                   }else if(position==trapLocation){
+                        idPos.src = "./TreasureTrap.jpg"
+                        gameOver = true
+                        penalty = penalty + 4
+                   }else{
+                        idPos.src = "./FinalImg.jpg"
+                        penalty = penalty + 1
+                   }
+                   
+                   checkCount = checkCount + 1
+    
+                   lastCheck = position
+    
+                   document.getElementById('penalty').innerHTML = `penalty is ${penalty}`
+    
+                }
+            }
+    
+    
+            function help(){
+                let row = Math.floor(lastCheck / 5)
+                let col = Math.floor(lastCheck % 5)
+    
+                if (row - col === 1 || col-row === 1){
+                    document.getElementById('help').innerHTML =  "Can smell it"
+                }
+    
+                let treasureRow = Math.floor(treasureLocation/5)
+                let treasureCol = Math.floor(treasureLocation % 5)
+    
+                if (Math.abs(treasureRow - row) + Math.abs(treasureCol-col) === 1){
+                    document.getElementById('help').innerHTML =  "Can smell it"
+                }else if(Math.abs(treasureRow - row) + Math.abs(treasureCol-col) === 2){
+                    document.getElementById('help').innerHTML =  "Close Matie"
+                }else{
+                    document.getElementById('help').innerHTML = "Step Faster"
+                }
+                penalty = penalty+2
+                document.getElementById('penalty').innerHTML = "penalty is "+ penalty
+                help_text = document.getElementById("help")
+                help_text.innerHTML = `Help report - ${report}`
+    
+            }
+    
+          function reset() {
+          checkCount = 0;
+          penalty = 0
+          treasureLocation = Math.round(Math.random() * (24));
+          trapLocation = Math.round(Math.random() * (24));
+          document.getElementById("locations").innerHTML = `Number of locations checked is ${checkCount}`
+          document.getElementById("penalty").innerHTML = `Penalty is ${penalty}`
+    }
+        </script> 
 </body>
 </html>
