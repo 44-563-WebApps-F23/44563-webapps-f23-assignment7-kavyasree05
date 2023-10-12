@@ -6,4 +6,4 @@ Hosted at [Pirate](https://44-563-webapps-f23.github.io/44563-webapps-f23-assign
 <br></br>
 Hosted at [React](https://44-563-webapps-f23.github.io/44563-webapps-f23-assignment7-kavyasree05/react.html)
 <br></br>
-Hosted at [Merge](https://44-563-webapps-f23.github.io/44563-webapps-f23-assignment7-kavyasree05/merge.html)
+Hosted at [Merge](https://44-563-webapps-f23.github.io/44563-webapps-f23-assignment7-kavyasree05/merger.html)
